@@ -1,0 +1,36 @@
+server:
+  port: 9001
+
+spring:
+  application:
+    name: activity-service
+
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/fitnessactivity
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+rabbitmq:
+  exchange:
+    name: fitness.exchange
+  queue:
+    name:
+      activity.queue
+  routing:
+    key:
+      activity.tracking
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+    instance-id: activity-service:9001
+    lease-renewal-interval-in-seconds: 10
+    lease-expiration-duration-in-seconds: 30

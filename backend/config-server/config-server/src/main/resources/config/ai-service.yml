@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: ai-service
+
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/fitnessactivity
+
+server:
+  port: 9002
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ai-service:9002
+    lease-renewal-interval-in-seconds: 10
+    lease-expiration-duration-in-seconds: 30
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+rabbitmq:
+  exchange:
+    name: fitness.exchange
+  queue:
+    name:
+      activity.queue
+  routing:
+    key:
+      activity.tracking
+gemini:
+  api:
+    # Use environment variable GEMINI_API_BASE_URL if set, otherwise use this default:
+    base-url: ${GEMINI_API_BASE_URL:https://generativelanguage.googleapis.com}
+    # Use environment variable GEMINI_API_ENDPOINT_PATH if set, otherwise use this default:
+    endpoint-path: ${GEMINI_API_ENDPOINT_PATH:/v1beta/models/gemini-2.0-flash:generateContent}
+    # Use environment variable GEMINI_API_KEY if set, otherwise you could put a default,
+    # but for sensitive keys, it's better to force it via env var.
+    key: ${GEMINI_API_KEY:AIzaSyCmovmP4OenIT4xML7JzQ2xis--M5CLUm8}
