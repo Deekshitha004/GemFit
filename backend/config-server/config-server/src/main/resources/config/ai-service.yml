@@ -41,4 +41,4 @@ gemini:
     endpoint-path: ${GEMINI_API_ENDPOINT_PATH:/v1beta/models/gemini-2.0-flash:generateContent}
     # Use environment variable GEMINI_API_KEY if set, otherwise you could put a default,
     # but for sensitive keys, it's better to force it via env var.
-    key: ${GEMINI_API_KEY:AIzaSyCmovmP4OenIT4xML7JzQ2xis--M5CLUm8}
+    key: ${GEMINI_API_KEY}
